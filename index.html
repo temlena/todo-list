@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+</head>
+<body>
+    <h1>To Do List</h1>
+    <div class="container">
+        <div id="task">
+            <input placeholder="Enter your tasks here.." type="text">
+            <button id="task-but">Add</button>
+        </div>
+        <div id="task-container">
+        </div>
+    </div>
+ <!-------------adding javascript file-->
+ <script type="text/javascript">
+    document.querySelector('#task-but').onclick = function(){
+    if(document.querySelector("#task input").value.length == 0){
+        alert("Please Enter a Task")
+    }
+    else{
+        document.querySelector("#task-container").innerHTML += `
+            <div class="tasks">
+                <span id="taskname">
+                    ${document.querySelector("#task input").value}
+                </span>
+                <button class="delete">
+                    <i class="far fa-trash-alt"></i>
+                </button>
+            </div>
+        `;
+        var current_tasks = document.querySelectorAll(".delete");
+        for(var i=0; i<current_tasks.length; i++){
+            current_tasks[i].onclick = function(){
+                this.parentNode.remove();
+            }
+        }
+    }
+}
+
+ </script>
+</body>
+</html>
